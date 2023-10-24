@@ -12,6 +12,14 @@ export default function DateCalculator() {
     setStep((currentValue) => currentValue + 1 )
   }
 
+  const minusCount = () => {
+    setCount( currentValue => currentValue - step)
+  }
+
+  const addCount = () => {
+    setCount( currentValue => currentValue + step)
+  }
+
   return (
     <div className='container'>
       <div className='step_counter'>
@@ -20,11 +28,11 @@ export default function DateCalculator() {
         <button onClick={addStep}>+</button>
       </div>
       <div className='count_counter'>
-        <button>-</button>
+        <button onClick={minusCount}>-</button>
         <div>Count:{count}</div>
-        <button>+</button>
+        <button onClick={addCount}>+</button>
       </div>
-
+      <div>Current Value : {count} </div>
     </div>
   )
 }
