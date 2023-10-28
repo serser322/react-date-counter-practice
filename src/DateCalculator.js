@@ -33,6 +33,11 @@ export default function DateCalculator() {
     setCount((currentValue) => currentValue + step);
   };
 
+  const handleReset = () => {
+    setStep(1);
+    setCount(0);
+  };
+
   return (
     <div className="container">
       <form action="" onSubmit={handleSubmit}>
@@ -55,6 +60,9 @@ export default function DateCalculator() {
       </form>
 
       <DateMessage dateCount={count} />
+      {count !== 0 || step !== 1 ? (
+        <button onClick={handleReset}>Reset</button>
+      ) : null}
     </div>
   );
 }

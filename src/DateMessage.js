@@ -4,7 +4,8 @@ export default function DateMessage({ dateCount }) {
 
   return (
     <div>
-      {dateCount} days from today is {date.toDateString()}
+      {dateCount === 0 ? `Today` : `${dateCount} days from today`} is {` `}
+      {date.toDateString()}
     </div>
   );
 }

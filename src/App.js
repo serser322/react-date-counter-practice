@@ -1,12 +1,11 @@
-import DateCalculator from "./DateCalculator"
+import DateCalculator from "./DateCalculator";
 
 const App = () => {
   return (
     <>
-    <div>Hello world</div>
-    <DateCalculator />
+      <DateCalculator />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
