@@ -3,14 +3,26 @@ import "./DateCalculator.css";
 import DateMessage from "./DateMessage";
 
 export default function DateCalculator() {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [count, setCount] = useState(0);
 
-  const minusStep = () => {
-    setStep((currentValue) => currentValue - 1);
+  // const minusStep = () => {
+  //   setStep((currentValue) => currentValue - 1);
+  // };
+  // const addStep = () => {
+  //   setStep((currentValue) => currentValue + 1);
+  // };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
   };
-  const addStep = () => {
-    setStep((currentValue) => currentValue + 1);
+
+  const updateStep = (event) => {
+    setStep(Number(event.target.value));
+  };
+
+  const updateCount = (event) => {
+    setCount(Number(event.target.value));
   };
 
   const minusCount = () => {
@@ -23,17 +35,25 @@ export default function DateCalculator() {
 
   return (
     <div className="container">
-      <div className="step_counter">
-        <button onClick={minusStep}>-</button>
-        <div>Step:{step}</div>
-        <button onClick={addStep}>+</button>
-      </div>
-      <div className="count_counter">
-        <button onClick={minusCount}>-</button>
-        <div>Count:{count}</div>
-        <button onClick={addCount}>+</button>
-      </div>
-      <div>Current Value : {count} </div>
+      <form action="" onSubmit={handleSubmit}>
+        <div className="step_counter">
+          <input
+            type="range"
+            min="1"
+            max="10"
+            value={step}
+            onChange={updateStep}
+          />
+          <div>Step:{step}</div>
+        </div>
+        <div>Count:</div>
+        <div className="count_counter">
+          <button onClick={minusCount}>-</button>
+          <input type="text" value={count} onChange={updateCount} />
+          <button onClick={addCount}>+</button>
+        </div>
+      </form>
+
       <DateMessage dateCount={count} />
     </div>
   );
